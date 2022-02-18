@@ -31,4 +31,4 @@ Functional Requirements
 
 ![alt text](https://github.com/HNow/ThinkTNCK/blob/main/wireframe.png) 
 
-*click for larger image*
+*click on image for larger version*
