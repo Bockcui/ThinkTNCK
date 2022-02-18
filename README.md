@@ -1,73 +1,7 @@
 # ThinkTNCK
+
 Name of Team:ThinkTNCK
 
-
-First name: Hisham
-
-
-Last name: Nasir
-
-
-
-York Email: hishamn@my.yorku.ca
-
-
-
-Lecture Section: N
-
-
-Lab Section: 1
-
-
-First name: Cheng
-
-
-Last name: Tian
-
-
-
-York Email: cttcui@my.yorku.ca
-
-
-
-Lecture Section: N
-
-
-Lab Section: 4
-
-
-First name: Khalifa 
-
-
-Last name: Khalifa
-
-
-
-York Email: khal202@my.yorku.ca
-
-
-
-Lecture Section: N
-
-
-Lab Section: 4
-
-
-First name: Wahid
-
-
-Last name: Tareq
-
-
-
-York Email: wahidt@my.yorku.ca
-
-
-
-Lecture Section: N
-
-
-Lab Section: 1
 
 
 Project Title: Shape Shift
