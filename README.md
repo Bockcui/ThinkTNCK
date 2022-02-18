@@ -29,6 +29,5 @@ Functional Requirements
 - Clear animations depicting which shapes are in the pattern and animations for the end of the game/high score
 - randomly generated pattern which decides the pattern that the user must recreate
 
-
-
+![alt text](https://github.com/HNow/ThinkTNCK/blob/main/wf.png) 
 
