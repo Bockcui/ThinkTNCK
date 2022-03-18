@@ -23,7 +23,7 @@
         android:id="@+id/easy_button"
         android:layout_width="600dp"
         android:layout_height="70dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_easy"
         android:text="Easy\n1 Second Per Shape"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,7 +37,7 @@
         android:id="@+id/hard_button"
         android:layout_width="600dp"
         android:layout_height="70dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_hard"
         android:text="Hard\n0.5 Seconds Per Shape"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,7 +51,7 @@
         android:id="@+id/med_button"
         android:layout_width="600dp"
         android:layout_height="70dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_med"
         android:text="Medium\n0.75 Seconds Per Shape"
 
         app:layout_constraintBottom_toBottomOf="parent"
