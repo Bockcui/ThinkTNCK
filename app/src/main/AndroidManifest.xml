@@ -21,6 +21,8 @@
 
         <activity android:name=".aboutActivity" ></activity>
 
+        <activity android:name=".diffActivity" ></activity>
+
     </application>
 
 </manifest>
