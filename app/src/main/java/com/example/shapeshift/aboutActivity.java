@@ -15,12 +15,12 @@ public class aboutActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_page);
-
-        ConstraintLayout constraintLayout = findViewById(R.id.mainLayout3);
-        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(2500);
-        animationDrawable.setExitFadeDuration(5000);
-        animationDrawable.start();
+//
+//        ConstraintLayout constraintLayout = findViewById(R.id.mainLayout3);
+//        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+//        animationDrawable.setEnterFadeDuration(2500);
+//        animationDrawable.setExitFadeDuration(5000);
+//        animationDrawable.start();
 
         Button back = (Button) findViewById(R.id.about_back);
         back.setOnClickListener(new View.OnClickListener() {
