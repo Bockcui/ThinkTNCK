@@ -29,6 +29,7 @@ public class MainActivity<val> extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(5000);
         animationDrawable.start();
 
+
         Button about = (Button) findViewById(R.id.about_button);
         about.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +45,8 @@ public class MainActivity<val> extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, diffActivity.class);
                 startActivity(intent);
+
+
             }
         });
 

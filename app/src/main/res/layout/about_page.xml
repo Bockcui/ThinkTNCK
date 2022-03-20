@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/mainLayout3"
+    android:background="@drawable/gradient_list">
 
     <Button
         android:id="@+id/about_back"
@@ -39,9 +41,11 @@
         android:layout_height="wrap_content"
         android:paddingLeft="9dp"
         android:paddingTop="9dp"
-        android:paddingBottom="9dp"
         android:paddingRight="9dp"
+        android:paddingBottom="9dp"
         android:text="Shape Shift is a game in which memorization is key.\n\nTo get started, press the play button and choose a difficulty. The shapes will glow in sequence, and you have to follow it to succeed. Go as far as possible and get the highest score! \n\nThis project was created by the ThinkTNCK company, using Android Studio.\n\nDEVELOPERS:\nHisham Nasir\nKhalifa Khalifa\nWahid Tareq\nCheng Tian Cui"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
