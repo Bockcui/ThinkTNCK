@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainLayout3"
+    android:background="@color/playButton">
 
     <Button
         android:id="@+id/about_back"
@@ -37,12 +48,36 @@
         android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:paddingLeft="9dp"
+        android:paddingTop="9dp"
+        android:paddingRight="9dp"
+        android:paddingBottom="9dp"
         android:text="Shape Shift is a game in which memorization is key.\n\nTo get started, press the play button and choose a difficulty. The shapes will glow in sequence, and you have to follow it to succeed. Go as far as possible and get the highest score! \n\nThis project was created by the ThinkTNCK company, using Android Studio.\n\nDEVELOPERS:\nHisham Nasir\nKhalifa Khalifa\nWahid Tareq\nCheng Tian Cui"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/about_title"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.119" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="145dp"
+        android:layout_height="147dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/about_back"
+        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.78"
+        app:srcCompat="@drawable/think_tnck_logo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+</ScrollView>

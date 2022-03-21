@@ -37,6 +37,7 @@
         android:id="@+id/textView3"
         android:layout_width="735dp"
         android:layout_height="330dp"
+        android:padding="9dp"
         android:text="Shape Shift is a game in which memorization is key.\n\nTo get started, press the play button and choose a difficulty. The shapes will glow in sequence, and you have to follow it to succeed. Go as far as possible and get the highest score! \n\nThis project was created by the ThinkTNCK company, using Android Studio.\n\nDEVELOPERS:\nHisham Nasir\nKhalifa Khalifa\nWahid Tareq\nCheng Tian Cui"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
