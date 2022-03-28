@@ -31,5 +31,36 @@ public class diffActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button diff_easy = (Button) findViewById(R.id.easy_button);
+        diff_easy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(diffActivity.this, gameActivity.class);
+                startActivity(intent);
+                gameActivity.difficulty = 0;
+            }
+        });
+
+        Button diff_med = (Button) findViewById(R.id.med_button);
+        diff_med.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(diffActivity.this, gameActivity.class);
+                startActivity(intent);
+                gameActivity.difficulty = 1;
+            }
+        });
+
+        Button diff_hard = (Button) findViewById(R.id.hard_button);
+        diff_hard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(diffActivity.this, gameActivity.class);
+                startActivity(intent);
+                gameActivity.difficulty = 2;
+            }
+        });
+
     }
 }
