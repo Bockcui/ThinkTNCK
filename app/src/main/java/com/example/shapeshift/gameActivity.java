@@ -9,6 +9,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +27,8 @@ public class gameActivity extends AppCompatActivity {
         setContentView(R.layout.game_page);
 
 
+
+
         // assign variable
         textView = findViewById(R.id.countdown);
 
@@ -33,6 +37,11 @@ public class gameActivity extends AppCompatActivity {
         long duration = TimeUnit.SECONDS.toMillis(30);
 
         // countdown timer
+
+
+
+
+
 
         new CountDownTimer(duration, 1000) {
             @Override
@@ -55,7 +64,14 @@ public class gameActivity extends AppCompatActivity {
             }
         }.start();
 
-    }
+
+
+
+        }
+
 
 
 }
+
+
+
