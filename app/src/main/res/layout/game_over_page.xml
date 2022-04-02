@@ -38,4 +38,35 @@
         app:layout_constraintVertical_bias="0.216" />
 
 
+    <TextView
+        android:id="@+id/highScoreAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New High Score! "
+        android:textColorHint="#AC8E8E"
+        android:textSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/play_again"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBoxHighScore"
+        app:layout_constraintVertical_bias="0.337" />
+
+    <EditText
+        android:id="@+id/textBoxHighScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter"
+        android:textAlignment="center"
+        android:ems="10"
+        android:maxLength="6"
+        android:inputType="textNoSuggestions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.448" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
