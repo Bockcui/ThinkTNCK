@@ -203,25 +203,26 @@ public class gameActivity extends AppCompatActivity{
                         @Override
                         public void run()
                         {
-                            /*
-                            switch(button)
-                            {
-                                case 0:
-                                    bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
-                                    break;
-                                case 1:
-                                    bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
-                                    break;
-                                case 2:
-                                    bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
-                                    break;
-                                case 3:
-                                    bCircle.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
-                                    break;
-                            }
-
-                             */
-                            Log.println(Log.INFO,"Timer","Should light up button");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    switch(button)
+                                    {
+                                        case 0:
+                                            bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                            break;
+                                        case 1:
+                                            bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                            break;
+                                        case 2:
+                                            bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                            break;
+                                        case 3:
+                                            bCircle.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                            break;
+                                    }
+                                }
+                            });
                         }
                     }, i * (250 + (1000 - difficulty * 250)));
 
@@ -229,24 +230,26 @@ public class gameActivity extends AppCompatActivity{
                         @Override
                         public void run()
                         {
-                            /*
-                            switch(button)
-                            {
-                                case 0:
-                                    bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
-                                    break;
-                                case 1:
-                                    bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_triangle_shape"));
-                                    break;
-                                case 2:
-                                    bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_diamond_shape"));
-                                    break;
-                                case 3:
-                                    bCircle.setBackground(Drawable.createFromPath("@drawable/ic_circle_shape"));
-                                    break;
-                            }
-                            */
-                            Log.println(Log.INFO,"Timer","Should bring button back to normal");
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    switch(button)
+                                    {
+                                        case 0:
+                                            bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                            break;
+                                        case 1:
+                                            bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_triangle_shape"));
+                                            break;
+                                        case 2:
+                                            bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_diamond_shape"));
+                                            break;
+                                        case 3:
+                                            bCircle.setBackground(Drawable.createFromPath("@drawable/ic_circle_shape"));
+                                            break;
+                                    }
+                                }
+                            });
                         }
                     }, ((i + 1) * (250 + (1000 - difficulty * 250)) - 250));
                 }
