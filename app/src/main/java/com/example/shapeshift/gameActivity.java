@@ -1,6 +1,7 @@
 package com.example.shapeshift;
 
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -55,6 +56,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
     TextView scoreTracker;
     TextView livesTracker;
 
+    MediaPlayer mySong;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
@@ -67,6 +69,8 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
         tri05=findViewById(R.id.tri05);
         dia05=findViewById(R.id.dia05);
         square05=findViewById(R.id.square05);
+
+        mySong = MediaPlayer.create(gameActivity.this, R.raw.zapsplat_multimedia_button_click_fast_wooden_organic_003_78837);
 
         circ75=findViewById(R.id.circ75);
         tri75=findViewById(R.id.tri75);
@@ -220,15 +224,18 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                                                 case 0://1sec
                                                     square1.setVisibility(View.VISIBLE);
                                                     square1.playAnimation();
+                                                    mySong.start();
                                                     break;
                                                 case 1://.75sec
                                                     square75.setVisibility(View.VISIBLE);
                                                     square75.playAnimation();
+                                                    mySong.start();
 
                                                     break;
                                                 case 2://.5 sec
                                                     square05.setVisibility(View.VISIBLE);
                                                     square05.playAnimation();
+                                                    mySong.start();
 
                                                     break;
 
@@ -244,15 +251,18 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                                                 case 0://1sec
                                                     tri1.setVisibility(View.VISIBLE);
                                                     tri1.playAnimation();
+                                                    mySong.start();
                                                     break;
                                                 case 1://.75sec
                                                     tri75.setVisibility(View.VISIBLE);
                                                     tri75.playAnimation();
+                                                    mySong.start();
 
                                                     break;
                                                 case 2://.5 sec
                                                     tri05.setVisibility(View.VISIBLE);
                                                     tri05.playAnimation();
+                                                    mySong.start();
                                                     break;
 
                                             }
@@ -268,15 +278,18 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                                                 case 0://1sec
                                                     dia1.setVisibility(View.VISIBLE);
                                                     dia1.playAnimation();
+                                                    mySong.start();
                                                     break;
                                                 case 1://.75sec
                                                     dia75.setVisibility(View.VISIBLE);
                                                     dia75.playAnimation();
+                                                    mySong.start();
 
                                                     break;
                                                 case 2://.5 sec
                                                     dia05.setVisibility(View.VISIBLE);
                                                     dia05.playAnimation();
+                                                    mySong.start();
                                                     break;
 
                                             }
@@ -292,15 +305,18 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                                                 case 0://1sec
                                                     circ1.setVisibility(View.VISIBLE);
                                                     circ1.playAnimation();
+                                                    mySong.start();
                                                     break;
                                                 case 1://.75sec
                                                     circ75.setVisibility(View.VISIBLE);
                                                     circ75.playAnimation();
+                                                    mySong.start();
                                                     break;
                                                 case 2://.5 sec
 
                                                     circ05.setVisibility(View.VISIBLE);
                                                     circ05.playAnimation();
+                                                    mySong.start();
                                                     break;
 
                                             }
@@ -422,15 +438,19 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.square:
                 inputs.add(0);
+                mySong.start();
                 break;
             case R.id.triangle:
                 inputs.add(1);
+                mySong.start();
                 break;
             case R.id.diamond:
                 inputs.add(2);
+                mySong.start();
                 break;
             case R.id.circle:
                 inputs.add(3);
+                mySong.start();
                 break;
         }
 
