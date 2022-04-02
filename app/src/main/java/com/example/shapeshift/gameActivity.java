@@ -3,6 +3,7 @@ package com.example.shapeshift;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,7 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 
+import java.sql.Time;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 
@@ -165,99 +169,112 @@ public class gameActivity extends AppCompatActivity{
         lives--;
     }
 
-    public void demoSequence()
-    {
-        for(int i = 0; i < sequence.size(); i++)
-        {
-            int index = i;
-            new CountDownTimer(1000 - difficulty * 250, 250)
-            {
-                @Override
-                public void onTick(long l)
-                {
-                    switch(sequence.get(index))
-                    {
-                        case 0:
-                            break;
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                    }
-                }
-
-                @Override
-                public void onFinish()
-                {
-                    switch(sequence.get(index))
-                    {
-                        case 0:
-                            bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
-                            break;
-                        case 1:
-                            bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_triangle_shape"));
-                            break;
-                        case 2:
-                            bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_diamond_shape"));
-                            break;
-                        case 3:
-                            bCircle.setBackground(Drawable.createFromPath("@drawable/ic_circle_shape"));
-                            break;
-                    }
-                }
-            }.start();
-
-            try
-            {
-                gameActivity.this.wait(250);
-            }
-            catch (InterruptedException e)
-            {
-                e.printStackTrace();
-            }
-        }
-    }
-
     public void startRound()
     {
-        bSquare.setEnabled(false);
-        bTriangle.setEnabled(false);
-        bDiamond.setEnabled(false);
-        bCircle.setEnabled(false);
+        bSquare.setClickable(false);
+        bTriangle.setClickable(false);
+        bDiamond.setClickable(false);
+        bCircle.setClickable(false);
 
         newSequence();
 
-        new CountDownTimer(5000, 1000)
-        {
+        new CountDownTimer(5000,1000) {
             @Override
-            public void onTick(long l)
-            {
-                switch((int) l / 1000)
-                {
-                    case 4:
-                        textView.setText(String.format("Round %d", round));
-                        break;
-                    case 2:
-                        textView.setText("Ready?");
-                        break;
-                    case 1:
-                        textView.setText("Go!");
-                        break;
-                    case 0:
-                        textView.setText("Remember the pattern!");
-                }
+            public void onTick(long l) {
+                if(l <= 5000 && l > 3000)
+                    textView.setText(String.format("Round %d", round));
+                else if(l <= 3000 && l > 2000)
+                    textView.setText("Ready?");
+                else if(l <= 2000 && l > 1000)
+                    textView.setText("Go!");
+                else
+                    textView.setText("Remember the pattern!");
             }
 
             @Override
             public void onFinish()
             {
-                textView.setText("Remember the pattern!");
+                Timer t = new Timer();
+                for(int i = 0; i < sequence.size(); i++)
+                {
+                    int index = i;
+                    int button = sequence.get(index);
+                    t.schedule(new TimerTask() {
+                        @Override
+                        public void run()
+                        {
+                            /*
+                            switch(button)
+                            {
+                                case 0:
+                                    bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                    break;
+                                case 1:
+                                    bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                    break;
+                                case 2:
+                                    bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                    break;
+                                case 3:
+                                    bCircle.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                    break;
+                            }
+
+                             */
+                            Log.println(Log.INFO,"Timer","Should light up button");
+                        }
+                    }, i * (250 + (1000 - difficulty * 250)));
+
+                    t.schedule(new TimerTask() {
+                        @Override
+                        public void run()
+                        {
+                            /*
+                            switch(button)
+                            {
+                                case 0:
+                                    bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                    break;
+                                case 1:
+                                    bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_triangle_shape"));
+                                    break;
+                                case 2:
+                                    bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_diamond_shape"));
+                                    break;
+                                case 3:
+                                    bCircle.setBackground(Drawable.createFromPath("@drawable/ic_circle_shape"));
+                                    break;
+                            }
+                            */
+                            Log.println(Log.INFO,"Timer","Should bring button back to normal");
+                        }
+                    }, ((i + 1) * (250 + (1000 - difficulty * 250)) - 250));
+                }
+
+                t.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        new CountDownTimer(2000,1000) {
+                            @Override
+                            public void onTick(long l) {
+                                if(l <= 2000 && l > 1000)
+                                    textView.setText("Your turn!");
+                                else
+                                    textView.setText("What was the pattern?");
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                bSquare.setClickable(true);
+                                bTriangle.setClickable(true);
+                                bDiamond.setClickable(true);
+                                bCircle.setClickable(true);
+                            }
+                        }.start();
+                    }
+                }, sequence.size() * (1000 - difficulty * 250));
             }
         }.start();
-
-        demoSequence();
     }
 
     @Override
