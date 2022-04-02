@@ -326,33 +326,6 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                             });
                         }
                     }, i * (250 + (1000 - difficulty * 250)));
-
-                    t.schedule(new TimerTask() {
-                        @Override
-                        public void run()
-                        {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    switch(button)
-                                    {
-                                        case 0:
-                                            //bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
-                                            break;
-                                        case 1:
-                                            //bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_triangle_shape"));
-                                            break;
-                                        case 2:
-                                           // bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_diamond_shape"));
-                                            break;
-                                        case 3:
-                                            //bCircle.setBackground(Drawable.createFromPath("@drawable/ic_circle_shape"));
-                                            break;
-                                    }
-                                }
-                            });
-                        }
-                    }, ((i + 1) * (250 + (1000 - difficulty * 250)) - 250));
                 }
 
                 t.schedule(new TimerTask() {
@@ -361,12 +334,12 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                         runOnUiThread(new Runnable() {
                             public void run(){
 
-                                new CountDownTimer(2000,1000) {
+                                new CountDownTimer(2500,500) {
                                     @Override
                                     public void onTick(long l) {
                                         if(l <= 2000 && l > 1000)
                                             textView.setText("Your turn!");
-                                        else
+                                        else if (l <= 1000)
                                             textView.setText("What was the pattern?");
 
                                     }
@@ -554,5 +527,11 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                 }.start();
             }
         }
+    }
+
+    @Override
+    public void finish()
+    {
+
     }
 }
