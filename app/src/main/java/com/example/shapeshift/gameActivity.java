@@ -16,6 +16,7 @@ import com.airbnb.lottie.LottieAnimationView;
 
 import java.sql.Time;
 import java.util.Locale;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
@@ -155,43 +156,13 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
     //Gameplay Back-end methods
     public void newSequence() //Will generate a sequence of integers from 0-3 of given length
     {
+        Random r = new Random();
         sequence = new ArrayList<>();
         inputs = new ArrayList<>();
         for (int i = 0; i < round + 3; i++)
         {
-            this.sequence.add((int) ((Math.random() * 100000) % 4));
+            this.sequence.add(r.nextInt(4));
         }
-    }
-
-    public void advanceRound()
-    {
-        this.round++;
-        this.newSequence();
-    }
-
-    public void checkInput()
-    {
-        if(inputs.size() < sequence.size())
-        {
-            int index = inputs.size() - 1;
-            if(inputs.get(index) != sequence.get(index))
-            {
-                loseLife();
-            }
-        }
-        else if(!inputs.equals(sequence))
-        {
-            loseLife();
-        }
-        else
-        {
-            advanceRound();
-        }
-    }
-
-    public void loseLife()
-    {
-        lives--;
     }
 
     public void startRound()
@@ -547,7 +518,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                             textView.setText("Nice! That's correct!");
                         else if(l <= 1000)
                         {
-                            int winPoints = (int) 100 + difficulty * 50;
+                            int winPoints = 100 + difficulty * 50;
                             textView.setText(String.format("+%d Points", winPoints));
                             score += winPoints;
                             scoreTracker.setText(String.format("Score: %d", score));
@@ -557,7 +528,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onFinish()
                     {
-                        advanceRound();
+                        round++;
                         startRound();
                     }
                 }.start();
