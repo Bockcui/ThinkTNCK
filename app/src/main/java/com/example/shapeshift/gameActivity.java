@@ -51,6 +51,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
     private Button bCircle;
 
     TextView textView;
+    TextView scoreTracker;
 
 
     @Override
@@ -95,6 +96,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
 
         // assign variable
         textView = findViewById(R.id.countdown);
+        scoreTracker = findViewById(R.id.score);
 
         // timer duration
 
@@ -147,6 +149,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
         round = 1;
         lives = 3;
         score = 0;
+        scoreTracker.setText(String.format("Score: %d", score));
     }
 
     //Gameplay Back-end methods
@@ -470,30 +473,94 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
         {
             if(inputs.get(inputs.size() - 1) != sequence.get(inputs.size() - 1))
             {
+                bSquare.setClickable(false);
+                bTriangle.setClickable(false);
+                bDiamond.setClickable(false);
+                bCircle.setClickable(false);
 
-                lives--;
-                if(lives == 0)
-                    finish();
-                else
-                    startRound();
-                //Start round again
+                new CountDownTimer(3000, 1000)
+                {
+                    @Override
+                    public void onTick(long l)
+                    {
+                        if (l <= 3000 && l > 1000)
+                            textView.setText("Uh oh! Wrong pattern!");
+                        else if(l <= 1000)
+                        {
+                            textView.setText("Life lost");
+                            lives--;
+                        }
+                    }
+
+                    @Override
+                    public void onFinish()
+                    {
+                        if(lives == 0)
+                            finish();
+                        else
+                            startRound();
+                    }
+                }.start();
             }
         }
         else if(inputs.size() == sequence.size())
         {
+            bSquare.setClickable(false);
+            bTriangle.setClickable(false);
+            bDiamond.setClickable(false);
+            bCircle.setClickable(false);
+
             if(!inputs.equals(sequence))
             {
-                lives--;
-                //Tooltip for mistake
-                if(lives == 0)
-                    finish();
-                else
-                    startRound();
+                new CountDownTimer(3000, 1000)
+                {
+                    @Override
+                    public void onTick(long l)
+                    {
+                        if (l <= 3000 && l > 1000)
+                            textView.setText("Uh oh! Wrong pattern!");
+                        else if(l <= 1000)
+                        {
+                            textView.setText("Life lost");
+                            lives--;
+                        }
+                    }
+
+                    @Override
+                    public void onFinish()
+                    {
+                        if(lives == 0)
+                            finish();
+                        else
+                            startRound();
+                    }
+                }.start();
             }
             else
             {
-                advanceRound();
-                startRound();
+                new CountDownTimer(3000, 1000)
+                {
+                    @Override
+                    public void onTick(long l)
+                    {
+                        if (l <= 3000 && l > 1000)
+                            textView.setText("Nice! That's correct!");
+                        else if(l <= 1000)
+                        {
+                            int winPoints = (int) 100 + difficulty * 50;
+                            textView.setText(String.format("+%d Points", winPoints));
+                            score += winPoints;
+                            scoreTracker.setText(String.format("Score: %d", score));
+                        }
+                    }
+
+                    @Override
+                    public void onFinish()
+                    {
+                        advanceRound();
+                        startRound();
+                    }
+                }.start();
             }
         }
     }
