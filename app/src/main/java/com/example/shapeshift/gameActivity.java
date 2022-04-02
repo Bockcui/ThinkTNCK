@@ -25,6 +25,21 @@ public class gameActivity extends AppCompatActivity{
     public static int difficulty = 0;
     // 0 -> easy, 1 -> medium, 2 -> hard
 
+    //creating animation objects for manipulation
+    LottieAnimationView circ75;
+    LottieAnimationView tri75;
+    LottieAnimationView dia75;
+    LottieAnimationView square75;
+
+    LottieAnimationView circ05;
+    LottieAnimationView tri05;
+    LottieAnimationView dia05;
+    LottieAnimationView square05;
+
+    LottieAnimationView circ1;
+    LottieAnimationView tri1;
+    LottieAnimationView dia1;
+    LottieAnimationView square1;
     private int round;
     private int lives;
     private int score;
@@ -43,6 +58,37 @@ public class gameActivity extends AppCompatActivity{
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_page);
+
+        //binding animation objects to their layout counterpart
+        circ05=findViewById(R.id.circ05);
+        tri05=findViewById(R.id.tri05);
+        dia05=findViewById(R.id.dia05);
+        square05=findViewById(R.id.square05);
+
+        circ75=findViewById(R.id.circ75);
+        tri75=findViewById(R.id.tri75);
+        dia75=findViewById(R.id.dia75);
+        square75=findViewById(R.id.square75);
+
+        circ1=findViewById(R.id.circ1);
+        tri1=findViewById(R.id.tri1);
+        dia1=findViewById(R.id.dia1);
+        square1=findViewById(R.id.square1);
+//making animation view invisible
+        circ75.setVisibility(View.GONE);
+        tri75.setVisibility(View.GONE);
+        dia75.setVisibility(View.GONE);
+        square75.setVisibility(View.GONE);
+
+        circ05.setVisibility(View.GONE);
+        tri05.setVisibility(View.GONE);
+        dia05.setVisibility(View.GONE);
+        square05.setVisibility(View.GONE);
+
+        circ1.setVisibility(View.GONE);
+        tri1.setVisibility(View.GONE);
+        dia1.setVisibility(View.GONE);
+        square1.setVisibility(View.GONE);
 
 
 
@@ -206,19 +252,107 @@ public class gameActivity extends AppCompatActivity{
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+
+                                    bSquare.setVisibility(View.INVISIBLE);
+                                    bCircle.setVisibility(View.INVISIBLE);
+                                    bDiamond.setVisibility(View.INVISIBLE);
+                                    bTriangle.setVisibility(View.INVISIBLE);
+
+
                                     switch(button)
                                     {
                                         case 0:
-                                            bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                            //bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+
+                                            switch (difficulty){//interior switch cases to determine which animation speed to play based on difficulty
+
+                                                case 0://1sec
+                                                    square1.setVisibility(View.VISIBLE);
+                                                    square1.playAnimation();
+                                                    break;
+                                                case 1://.75sec
+                                                    square75.setVisibility(View.VISIBLE);
+                                                    square75.playAnimation();
+
+                                                    break;
+                                                case 2://.5 sec
+                                                    square05.setVisibility(View.VISIBLE);
+                                                    square05.playAnimation();
+
+                                                    break;
+
+                                            }
+//                                            square75.setVisibility(View.VISIBLE);
+//                                            square75.playAnimation();
                                             break;
                                         case 1:
-                                            bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                           // bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+
+                                            switch (difficulty){
+
+                                                case 0://1sec
+                                                    tri1.setVisibility(View.VISIBLE);
+                                                    tri1.playAnimation();
+                                                    break;
+                                                case 1://.75sec
+                                                    tri75.setVisibility(View.VISIBLE);
+                                                    tri75.playAnimation();
+
+                                                    break;
+                                                case 2://.5 sec
+                                                    tri05.setVisibility(View.VISIBLE);
+                                                    tri05.playAnimation();
+                                                    break;
+
+                                            }
+
+//                                            tri75.setVisibility(View.VISIBLE);
+//                                            tri75.playAnimation();
                                             break;
                                         case 2:
-                                            bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+
+                                            switch (difficulty){
+
+                                                case 0://1sec
+                                                    dia1.setVisibility(View.VISIBLE);
+                                                    dia1.playAnimation();
+                                                    break;
+                                                case 1://.75sec
+                                                    dia75.setVisibility(View.VISIBLE);
+                                                    dia75.playAnimation();
+
+                                                    break;
+                                                case 2://.5 sec
+                                                    dia05.setVisibility(View.VISIBLE);
+                                                    dia05.playAnimation();
+                                                    break;
+
+                                            }
+
+//                                            dia75.setVisibility(View.VISIBLE);
+//                                            dia75.playAnimation();
+                                           // bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
                                             break;
                                         case 3:
-                                            bCircle.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                            switch (difficulty){
+                                                case 0://1sec
+                                                    circ1.setVisibility(View.VISIBLE);
+                                                    circ1.playAnimation();
+                                                    break;
+                                                case 1://.75sec
+                                                    circ75.setVisibility(View.VISIBLE);
+                                                    circ75.playAnimation();
+                                                    break;
+                                                case 2://.5 sec
+
+                                                    circ05.setVisibility(View.VISIBLE);
+                                                    circ05.playAnimation();
+                                                    break;
+
+                                            }
+//                                            circ75.setVisibility(View.VISIBLE);
+//                                            circ75.playAnimation();
+                                           // bCircle.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
                                             break;
                                     }
                                 }
@@ -236,16 +370,16 @@ public class gameActivity extends AppCompatActivity{
                                     switch(button)
                                     {
                                         case 0:
-                                            bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
+                                            //bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
                                             break;
                                         case 1:
-                                            bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_triangle_shape"));
+                                            //bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_triangle_shape"));
                                             break;
                                         case 2:
-                                            bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_diamond_shape"));
+                                           // bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_diamond_shape"));
                                             break;
                                         case 3:
-                                            bCircle.setBackground(Drawable.createFromPath("@drawable/ic_circle_shape"));
+                                            //bCircle.setBackground(Drawable.createFromPath("@drawable/ic_circle_shape"));
                                             break;
                                     }
                                 }
@@ -257,23 +391,72 @@ public class gameActivity extends AppCompatActivity{
                 t.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        new CountDownTimer(2000,1000) {
-                            @Override
-                            public void onTick(long l) {
-                                if(l <= 2000 && l > 1000)
-                                    textView.setText("Your turn!");
-                                else
-                                    textView.setText("What was the pattern?");
+                        runOnUiThread(new Runnable() {
+                            public void run(){
+
+                                new CountDownTimer(2000,1000) {
+                                    @Override
+                                    public void onTick(long l) {
+                                        if(l <= 2000 && l > 1000)
+                                            textView.setText("Your turn!");
+                                        else
+                                            textView.setText("What was the pattern?");
+
+                                    }
+
+                                    @Override
+                                    public void onFinish() {
+                                        //making buttons visible again
+                                        bSquare.setVisibility(View.VISIBLE);
+                                        bCircle.setVisibility(View.VISIBLE);
+                                        bDiamond.setVisibility(View.VISIBLE);
+                                        bTriangle.setVisibility(View.VISIBLE);
+
+                                        //making animations invisible again
+                                        circ1.setVisibility(View.GONE);
+                                        tri1.setVisibility(View.GONE);
+                                        dia1.setVisibility(View.GONE);
+                                        square1.setVisibility(View.GONE);
+
+                                        circ75.setVisibility(View.GONE);
+                                        dia75.setVisibility(View.GONE);
+                                        square75.setVisibility(View.GONE);
+                                        tri75.setVisibility(View.GONE);
+
+                                        circ05.setVisibility(View.GONE);
+                                        tri05.setVisibility(View.GONE);
+                                        dia05.setVisibility(View.GONE);
+                                        square05.setVisibility(View.GONE);
+
+                                        //making buttons visible
+                                        bSquare.setClickable(true);
+                                        bTriangle.setClickable(true);
+                                        bDiamond.setClickable(true);
+                                        bCircle.setClickable(true);
+                                    }
+                                }.start();
+
                             }
 
-                            @Override
-                            public void onFinish() {
-                                bSquare.setClickable(true);
-                                bTriangle.setClickable(true);
-                                bDiamond.setClickable(true);
-                                bCircle.setClickable(true);
-                            }
-                        }.start();
+                        });
+
+//                        new CountDownTimer(2000,1000) {
+//                            @Override
+//                            public void onTick(long l) {
+//                                if(l <= 2000 && l > 1000)
+//                                    textView.setText("Your turn!");
+//                                else
+//                                    textView.setText("What was the pattern?");
+//                            }
+//
+//                            @Override
+//                            public void onFinish() {
+//                                bSquare.setClickable(true);
+//                                bTriangle.setClickable(true);
+//                                bDiamond.setClickable(true);
+//                                bCircle.setClickable(true);
+//                            }
+//                        }.start();
                     }
                 }, sequence.size() * (1000 - difficulty * 250));
             }
