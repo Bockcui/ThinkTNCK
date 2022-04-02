@@ -23,6 +23,8 @@
 
         <activity android:name=".diffActivity" ></activity>
 
+        <activity android:name=".gameOver" ></activity>
+
         <activity android:name=".gameActivity" ></activity>
 
     </application>

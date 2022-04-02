@@ -1,5 +1,6 @@
 package com.example.shapeshift;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -480,7 +481,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                     public void onFinish()
                     {
                         if(lives == 0)
-                            finish();
+                            onEnd(score);
                         else
                             startRound();
                     }
@@ -513,7 +514,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                     public void onFinish()
                     {
                         if(lives == 0)
-                            finish();
+                            onEnd(score);
                         else
                             startRound();
                     }
@@ -546,5 +547,18 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                 }.start();
             }
         }
+    }
+
+    private void onEnd(int finScore)
+    {
+        Intent intentEnd= new Intent(gameActivity.this, gameOver.class);
+
+        intentEnd.putExtra("val",finScore);
+        startActivity(intentEnd);
+
+
+
+
+
     }
 }
