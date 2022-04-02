@@ -53,6 +53,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView textView;
     TextView scoreTracker;
+    TextView livesTracker;
 
 
     @Override
@@ -98,6 +99,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
         // assign variable
         textView = findViewById(R.id.countdown);
         scoreTracker = findViewById(R.id.score);
+        livesTracker = findViewById(R.id.livesTracker);
 
         // timer duration
 
@@ -151,6 +153,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
         lives = 3;
         score = 0;
         scoreTracker.setText(String.format("Score: %d", score));
+        livesTracker.setText("\u2665\u2665\u2665");
     }
 
     //Gameplay Back-end methods
@@ -387,6 +390,24 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
         }.start();
     }
 
+    public void loseLife()
+    {
+        lives--;
+        textView.setText("Life lost!");
+        if(lives == 2)
+        {
+            livesTracker.setText("\u2665\u2665");
+        }
+        else if(lives == 1)
+        {
+            livesTracker.setText("\u2665");
+        }
+        else if(lives == 0)
+        {
+            livesTracker.setText("");
+        }
+    }
+
     @Override
     public void onStart()
     {
@@ -431,8 +452,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                             textView.setText("Uh oh! Wrong pattern!");
                         else if(l <= 1000)
                         {
-                            textView.setText("Life lost");
-                            lives--;
+                            loseLife();
                         }
                     }
 
@@ -465,8 +485,7 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                             textView.setText("Uh oh! Wrong pattern!");
                         else if(l <= 1000)
                         {
-                            textView.setText("Life lost");
-                            lives--;
+                            loseLife();
                         }
                     }
 
@@ -507,11 +526,5 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
                 }.start();
             }
         }
-    }
-
-    @Override
-    public void finish()
-    {
-
     }
 }
