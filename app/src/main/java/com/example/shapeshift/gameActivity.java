@@ -253,17 +253,17 @@ public class gameActivity extends AppCompatActivity{
                                 @Override
                                 public void run() {
 
-                                   // bSquare.setVisibility(View.INVISIBLE);
-                                   // bCircle.setVisibility(View.INVISIBLE);
-//                                    bDiamond.setVisibility(View.INVISIBLE);
-//                                    bTriangle.setVisibility(View.INVISIBLE);
+                                    bSquare.setVisibility(View.INVISIBLE);
+                                    bCircle.setVisibility(View.INVISIBLE);
+                                    bDiamond.setVisibility(View.INVISIBLE);
+                                    bTriangle.setVisibility(View.INVISIBLE);
 
 
                                     switch(button)
                                     {
                                         case 0:
                                             //bSquare.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
-                                            bSquare.setVisibility(View.INVISIBLE);
+
                                             switch (difficulty){//interior switch cases to determine which animation speed to play based on difficulty
 
                                                 case 0://1sec
@@ -287,7 +287,7 @@ public class gameActivity extends AppCompatActivity{
                                             break;
                                         case 1:
                                            // bTriangle.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
-                                            bTriangle.setVisibility(View.INVISIBLE);
+
                                             switch (difficulty){
 
                                                 case 0://1sec
@@ -310,7 +310,7 @@ public class gameActivity extends AppCompatActivity{
 //                                            tri75.playAnimation();
                                             break;
                                         case 2:
-                                            bDiamond.setVisibility(View.INVISIBLE);
+
                                             switch (difficulty){
 
                                                 case 0://1sec
@@ -334,7 +334,6 @@ public class gameActivity extends AppCompatActivity{
                                            // bDiamond.setBackground(Drawable.createFromPath("@drawable/ic_square_shape"));
                                             break;
                                         case 3:
-                                            bCircle.setVisibility(View.INVISIBLE);
                                             switch (difficulty){
                                                 case 0://1sec
                                                     circ1.setVisibility(View.VISIBLE);
