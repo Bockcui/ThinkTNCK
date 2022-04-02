@@ -21,7 +21,7 @@ import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 
-public class gameActivity extends AppCompatActivity{
+public class gameActivity extends AppCompatActivity implements View.OnClickListener {
     public static int difficulty = 0;
     // 0 -> easy, 1 -> medium, 2 -> hard
 
@@ -136,34 +136,10 @@ public class gameActivity extends AppCompatActivity{
         bDiamond = (Button) findViewById(R.id.diamond);
         bCircle = (Button) findViewById(R.id.circle);
 
-        bSquare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                inputs.add(0);
-                checkInput();
-            }
-        });
-        bTriangle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                inputs.add(1);
-                checkInput();
-            }
-        });
-        bDiamond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                inputs.add(2);
-                checkInput();
-            }
-        });
-        bCircle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                inputs.add(3);
-                checkInput();
-            }
-        });
+        bSquare.setOnClickListener(this);
+        bTriangle.setOnClickListener(this);
+        bDiamond.setOnClickListener(this);
+        bCircle.setOnClickListener(this);
 
         //Initialize sequence ArrayList
         sequence = new ArrayList<>();
@@ -176,8 +152,8 @@ public class gameActivity extends AppCompatActivity{
     //Gameplay Back-end methods
     public void newSequence() //Will generate a sequence of integers from 0-3 of given length
     {
-        sequence.clear();
-        inputs.clear();
+        sequence = new ArrayList<>();
+        inputs = new ArrayList<>();
         for (int i = 0; i < round + 3; i++)
         {
             this.sequence.add((int) ((Math.random() * 100000) % 4));
@@ -469,5 +445,56 @@ public class gameActivity extends AppCompatActivity{
     {
         super.onStart();
         startRound();
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+            case R.id.square:
+                inputs.add(0);
+                break;
+            case R.id.triangle:
+                inputs.add(1);
+                break;
+            case R.id.diamond:
+                inputs.add(2);
+                break;
+            case R.id.circle:
+                inputs.add(3);
+                break;
+        }
+
+        if(inputs.size() < sequence.size())
+        {
+            if(inputs.get(inputs.size() - 1) != sequence.get(inputs.size() - 1))
+            {
+
+                lives--;
+                if(lives == 0)
+                    finish();
+                else
+                    startRound();
+                //Start round again
+            }
+        }
+        else if(inputs.size() == sequence.size())
+        {
+            if(!inputs.equals(sequence))
+            {
+                lives--;
+                //Tooltip for mistake
+                if(lives == 0)
+                    finish();
+                else
+                    startRound();
+            }
+            else
+            {
+                advanceRound();
+                startRound();
+            }
+        }
     }
 }
