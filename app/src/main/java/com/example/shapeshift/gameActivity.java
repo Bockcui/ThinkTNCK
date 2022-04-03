@@ -552,8 +552,9 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
     private void onEnd(int finScore)
     {
         Intent intentEnd= new Intent(gameActivity.this, gameOver.class);
-
+        intentEnd.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intentEnd.putExtra("val",finScore);
         startActivity(intentEnd);
+        finish();
     }
 }

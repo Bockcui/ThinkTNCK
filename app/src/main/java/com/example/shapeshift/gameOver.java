@@ -111,6 +111,7 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
                 Intent diff = new Intent(this, diffActivity.class);
                 diff.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(diff);
+                finish();
                 break;
             case R.id.save:
                 player.setName(textBox.getText().toString());
@@ -129,6 +130,13 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
                 Intent menu = new Intent(this, MainActivity.class);
                 menu.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(menu);
+                finish();
+                break;
+            case R.id.leaderboard:
+                Intent leaders = new Intent(this, leaderboard.class);
+                leaders.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(leaders);
+                finish();
                 break;
         }
     }
