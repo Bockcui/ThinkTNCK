@@ -24,6 +24,10 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
     private Highscore player;
     private int score;
     private EditText textBox;
+    private Button play_again;
+    private Button save;
+    private Button menu;
+    private Button leaderboard;
 //    LottieAnimationView shapeDraw;
 
 
@@ -44,15 +48,15 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
         hsAlert.setVisibility(View.INVISIBLE);
         hsAlert.setText("Better luck next time!");
 
-        Button play_again = (Button) findViewById(R.id.play_again);
-        Button save = (Button) findViewById((R.id.save));
-        play_again.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(gameOver.this, diffActivity.class);
-                startActivity(intent);
-            }
-        });
+        play_again = (Button) findViewById(R.id.play_again);
+        save = (Button) findViewById(R.id.save);
+        menu = (Button) findViewById(R.id.Menu);
+        leaderboard = (Button) findViewById(R.id.leaderboard);
+
+        play_again.setOnClickListener(this);
+        save.setOnClickListener(this);
+        menu.setOnClickListener(this);
+        leaderboard.setOnClickListener(this);
 
         Intent intentEnd= getIntent();
         score=intentEnd.getIntExtra("val",0);
@@ -95,8 +99,9 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
         switch (view.getId())
         {
             case R.id.play_again:
-                finish();
-                super.finish();
+                Intent diff = new Intent(this, diffActivity.class);
+                diff.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(diff);
                 break;
             case R.id.save:
                 player.setName(textBox.getText().toString());
@@ -110,6 +115,11 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                break;
+            case R.id.Menu:
+                Intent menu = new Intent(this, MainActivity.class);
+                menu.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(menu);
                 break;
         }
     }
