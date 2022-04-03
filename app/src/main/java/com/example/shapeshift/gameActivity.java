@@ -555,10 +555,5 @@ public class gameActivity extends AppCompatActivity implements View.OnClickListe
 
         intentEnd.putExtra("val",finScore);
         startActivity(intentEnd);
-
-
-
-
-
     }
 }
