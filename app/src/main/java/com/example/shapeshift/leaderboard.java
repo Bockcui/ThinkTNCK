@@ -1,6 +1,9 @@
 package com.example.shapeshift;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,6 +15,15 @@ public class leaderboard extends AppCompatActivity {
         setContentView(R.layout.leader_page);
 
 
+
+        Button backButton = (Button) findViewById(R.id.back);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(leaderboard.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
