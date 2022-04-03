@@ -30,16 +30,6 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_over_page);
 
-        File f = new File("highscores.csv");
-        if(!f.exists())
-        {
-            try {
-                f.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
         TextView scoreText=(TextView)findViewById(R.id.scoreT);
         TextView hsAlert=(TextView)findViewById(R.id.highScoreAlert);
         textBox=(EditText)findViewById(R.id.textBoxHighScore);
@@ -60,6 +50,7 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
 
         Intent intentEnd= getIntent();
         score=intentEnd.getIntExtra("val",0);
+        top5 = new ArrayList<>();
         player = new Highscore("TEMP",String.valueOf(score));
 
         scoreText.setText("Score: "+score);
@@ -81,7 +72,7 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
             e.printStackTrace();
         }
 
-        for(int i = 4; i >=0; i--)
+        for(int i = top5.size() - 1; i >=0; i--)
         {
             if(player.getScoreInt() > top5.get(i).getScoreInt())
             {
@@ -105,7 +96,7 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
                 player.setName(textBox.getText().toString());
                 try {
                     FileWriter f = new FileWriter("highscores.csv", false);
-                    for(int i = 0; i < 4; i++)
+                    for(int i = 0; i < 4 || i < top5.size(); i++)
                     {
                         f.write(String.format("%s,%s", top5.get(i).getName(), top5.get(i).getScore()));
                     }
