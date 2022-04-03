@@ -58,6 +58,15 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
         menu.setOnClickListener(this);
         leaderboard.setOnClickListener(this);
 
+        Button mainMenu = (Button) findViewById(R.id.Menu);
+        mainMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(gameOver.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Intent intentEnd= getIntent();
         score=intentEnd.getIntExtra("val",0);
         top5 = new ArrayList<>();
