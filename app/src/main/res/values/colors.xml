@@ -14,6 +14,8 @@
     <color name="navButton">#9ABCD4</color>
 <color name="transparent">#00FFFFFF</color>
     <color name="playButton">#9AD4B2</color>
+    <color name="gold">#FFC130</color>
+    <color name="greyish">#454545</color>
     
 
 </resources>
