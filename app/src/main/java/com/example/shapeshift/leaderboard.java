@@ -25,6 +25,15 @@ public class leaderboard extends AppCompatActivity {
             }
         });
 
+        Button playButton = (Button) findViewById(R.id.play_again);
+        playButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(leaderboard.this, diffActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
