@@ -99,6 +99,13 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
                 hsAlert.setText("A new highscore!");
             }
         }
+
+        if(top5.size() == 0)
+        {
+            top5.add(player);
+            hsAlert.setText("A new highscore!");
+        }
+
         textBox.setVisibility(View.VISIBLE);
     }
 
