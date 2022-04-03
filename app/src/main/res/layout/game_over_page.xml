@@ -11,18 +11,16 @@
 
     <Button
         android:id="@+id/play_again"
-        android:layout_width="247dp"
-        android:layout_height="118dp"
+        android:layout_width="173dp"
+        android:layout_height="99dp"
         android:background="@drawable/rounded_play_button"
         android:text="Play Again"
 
-        android:textSize="50sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.897" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/Menu" />
 
     <TextView
         android:id="@+id/scoreT"
@@ -42,31 +40,57 @@
         android:id="@+id/highScoreAlert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New High Score! "
         android:textColorHint="#AC8E8E"
         android:textSize="40dp"
-        app:layout_constraintBottom_toTopOf="@+id/play_again"
+        app:layout_constraintBottom_toTopOf="@+id/textBoxHighScore"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textBoxHighScore"
+        app:layout_constraintTop_toBottomOf="@+id/scoreT"
         app:layout_constraintVertical_bias="0.337" />
 
     <EditText
         android:id="@+id/textBoxHighScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter"
-        android:textAlignment="center"
+        android:layout_width="363dp"
+        android:layout_height="39dp"
         android:ems="10"
-        android:maxLength="6"
+        android:hint="Enter name"
         android:inputType="textNoSuggestions"
+        android:maxLength="6"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.448" />
+
+    <Button
+        android:id="@+id/Menu"
+        android:layout_width="197dp"
+        android:layout_height="93dp"
+        android:layout_marginBottom="8dp"
+        android:text="Menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="365dp"
+        android:layout_height="40dp"
+        android:text="Save Highscore"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBoxHighScore" />
+
+    <Button
+        android:id="@+id/leaderboard"
+        android:layout_width="362dp"
+        android:layout_height="39dp"
+        android:text="Leaderboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/save" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

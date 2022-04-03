@@ -17,8 +17,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class gameOver extends AppCompatActivity {
-    ArrayList<Highscore> top5;
+public class gameOver extends AppCompatActivity implements View.OnClickListener{
+    private ArrayList<Highscore> top5;
+    private Highscore player;
+    private int score;
+    private EditText textBox;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -27,15 +30,26 @@ public class gameOver extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_over_page);
 
+        File f = new File("highscores.csv");
+        if(!f.exists())
+        {
+            try {
+                f.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         TextView scoreText=(TextView)findViewById(R.id.scoreT);
         TextView hsAlert=(TextView)findViewById(R.id.highScoreAlert);
-        EditText textBox=(EditText)findViewById(R.id.textBoxHighScore);
+        textBox=(EditText)findViewById(R.id.textBoxHighScore);
 
-        textBox.setVisibility(View.GONE);
-        hsAlert.setVisibility(View.GONE);
-
+        textBox.setVisibility(View.INVISIBLE);
+        hsAlert.setVisibility(View.INVISIBLE);
+        hsAlert.setText("Better luck next time!");
 
         Button play_again = (Button) findViewById(R.id.play_again);
+        Button save = (Button) findViewById((R.id.save));
         play_again.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,7 +59,8 @@ public class gameOver extends AppCompatActivity {
         });
 
         Intent intentEnd= getIntent();
-        int score=intentEnd.getIntExtra("val",0);
+        score=intentEnd.getIntExtra("val",0);
+        player = new Highscore("TEMP",String.valueOf(score));
 
         scoreText.setText("Score: "+score);
 
@@ -59,11 +74,46 @@ public class gameOver extends AppCompatActivity {
                 highscore = l.split(schar);
                 top5.add(new Highscore(highscore[0], highscore[1]));
             }
-            Collections.sort(top5, Comparator.comparing(Highscore::getScore).reversed());
+            Collections.sort(top5, Comparator.comparing(Highscore::getScoreInt).reversed());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        for(int i = 4; i >=0; i--)
+        {
+            if(player.getScoreInt() > top5.get(i).getScoreInt())
+            {
+                top5.add(i, player);
+                hsAlert.setText("A new highscore!");
+                textBox.setVisibility(View.VISIBLE);
+            }
+        }
+        textBox.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+            case R.id.play_again:
+                finish();
+                super.finish();
+                break;
+            case R.id.save:
+                player.setName(textBox.getText().toString());
+                try {
+                    FileWriter f = new FileWriter("highscores.csv", false);
+                    for(int i = 0; i < 4; i++)
+                    {
+                        f.write(String.format("%s,%s", top5.get(i).getName(), top5.get(i).getScore()));
+                    }
+                    f.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 }
