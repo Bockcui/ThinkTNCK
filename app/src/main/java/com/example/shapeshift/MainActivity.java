@@ -39,6 +39,15 @@ public class MainActivity<val> extends AppCompatActivity {
             }
         });
 
+        Button leader = (Button) findViewById(R.id.leaderboard_button);
+        leader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, leaderboard.class);
+                startActivity(intent);
+            }
+        });
+
         Button play = (Button) findViewById(R.id.play_button2);
         play.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -25,6 +25,8 @@
 
         <activity android:name=".gameOver" ></activity>
 
+        <activity android:name=".leaderboard" ></activity>
+
         <activity android:name=".gameActivity" ></activity>
 
     </application>
