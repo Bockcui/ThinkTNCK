@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,6 +24,7 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
     private Highscore player;
     private int score;
     private EditText textBox;
+//    LottieAnimationView shapeDraw;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -29,6 +32,9 @@ public class gameOver extends AppCompatActivity implements View.OnClickListener{
     protected void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_over_page);
+
+//        shapeDraw.findViewById(R.id.shapeDraw);
+//        shapeDraw.playAnimation();
 
         TextView scoreText=(TextView)findViewById(R.id.scoreT);
         TextView hsAlert=(TextView)findViewById(R.id.highScoreAlert);
